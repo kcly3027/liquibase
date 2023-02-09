@@ -113,5 +113,17 @@ public class UpdateSummary implements CustomMdcObject {
         public void setTotalSkipped(int totalSkipped) {
             this.totalSkipped = totalSkipped;
         }
+
+        public void incrementDbmsUnknown() {
+            dbmsUnknown++;
+        }
+
+        public void incrementLabels() {
+            labels++;
+        }
+
+        public void incrementContext() {
+            context++;
+        }
     }
 }

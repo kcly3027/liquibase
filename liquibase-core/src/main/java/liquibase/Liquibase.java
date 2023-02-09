@@ -402,7 +402,7 @@ public class Liquibase implements AutoCloseable {
             ChangeSetFilterResult filterResult = new ChangeSetFilterResult(false, mismatchMessage, null);
             changeSetStatus.setFilterResults(Collections.singleton(filterResult));
             finalList.add(changeSetStatus);
-            skippedMdc.setDbmsUnknown(skippedMdc.getDbmsUnknown() + 1);
+            skippedMdc.incrementDbmsUnknown();
         });
 
         finalList.sort(new Comparator<ChangeSetStatus>() {
@@ -426,9 +426,9 @@ public class Liquibase implements AutoCloseable {
             st.getFilterResults().forEach(consumer -> {
                 if (consumer.getFilter() != null) {
                     if (consumer.getFilter().isAssignableFrom(LabelChangeSetFilter.class)) {
-                        skippedMdc.setLabels(skippedMdc.getLabels() + 1);
+                        skippedMdc.incrementLabels();
                     } else if (consumer.getFilter().isAssignableFrom(ContextChangeSetFilter.class)) {
-                        skippedMdc.setContext(skippedMdc.getContext() + 1);
+                        skippedMdc.incrementContext();
                     }
                 }
                 String skippedMessage = String.format("   '%s' : %s", st.getChangeSet().toString(), consumer.getMessage());
