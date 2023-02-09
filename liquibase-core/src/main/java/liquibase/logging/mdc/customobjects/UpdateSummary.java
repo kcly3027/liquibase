@@ -2,6 +2,9 @@ package liquibase.logging.mdc.customobjects;
 
 import liquibase.logging.mdc.CustomMdcObject;
 
+/**
+ * This class is the representation of the summary available in the update command.
+ */
 public class UpdateSummary implements CustomMdcObject {
     private String value;
     private int run;
