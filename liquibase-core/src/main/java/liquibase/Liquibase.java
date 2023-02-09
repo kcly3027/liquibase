@@ -424,10 +424,12 @@ public class Liquibase implements AutoCloseable {
         //
         for (ChangeSetStatus st : finalList) {
             st.getFilterResults().forEach(consumer -> {
-                if (consumer.getFilter().isAssignableFrom(LabelChangeSetFilter.class)) {
-                    skippedMdc.setLabels(skippedMdc.getLabels() + 1);
-                } else if (consumer.getFilter().isAssignableFrom(ContextChangeSetFilter.class)) {
-                    skippedMdc.setContext(skippedMdc.getContext() + 1);
+                if (consumer.getFilter() != null) {
+                    if (consumer.getFilter().isAssignableFrom(LabelChangeSetFilter.class)) {
+                        skippedMdc.setLabels(skippedMdc.getLabels() + 1);
+                    } else if (consumer.getFilter().isAssignableFrom(ContextChangeSetFilter.class)) {
+                        skippedMdc.setContext(skippedMdc.getContext() + 1);
+                    }
                 }
                 String skippedMessage = String.format("   '%s' : %s", st.getChangeSet().toString(), consumer.getMessage());
                 Scope.getCurrentScope().getLog(getClass()).info(skippedMessage);
