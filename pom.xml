@@ -5,7 +5,7 @@
 
     <groupId>org.liquibase</groupId>
     <artifactId>liquibase</artifactId>
-    <version>0-SNAPSHOT</version>
+    <version>4.9.0-dm-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <url>http://www.liquibase.org</url>
@@ -320,15 +320,15 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
+                <!--<configuration>-->
+                <!--    <skip>true</skip>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                <!--    <execution>-->
+                <!--        <id>default-deploy</id>-->
+                <!--        <phase>none</phase>-->
+                <!--    </execution>-->
+                <!--</executions>-->
             </plugin>
 
             <plugin>
@@ -413,13 +413,13 @@
                 </executions>
             </plugin>
 
-            <!--        <plugin>-->
-            <!--            <artifactId>maven-install-plugin</artifactId>-->
-            <!--            <version>2.5.2</version>-->
-            <!--            <configuration>-->
-            <!--                <skip>true</skip>-->
-            <!--            </configuration>-->
-            <!--        </plugin>-->
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
 
         </plugins>
         <!--        <pluginManagement>-->
@@ -519,4 +519,11 @@
             </build>
         </profile>
     </profiles>
+    <distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <name>zongtuo-snapshots</name>
+            <url>https://ds.dongriyangguang.top:7898/repository/maven-snapshots/</url>
+        </repository>
+    </distributionManagement>
 </project>
