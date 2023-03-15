@@ -53,7 +53,9 @@ public class BooleanType extends LiquibaseDataType {
             if (originalDefinition.toLowerCase(Locale.US).startsWith("bit")) {
                 return new DatabaseDataType("BIT", getParameters());
             }
-    }
+        } else if (database instanceof DMDatabase) {
+            return new DatabaseDataType("BIT");
+        }
 
         return super.toDatabaseDataType(database);
     }
@@ -121,7 +123,8 @@ public class BooleanType extends LiquibaseDataType {
         return (database instanceof Db2zDatabase) || (database instanceof FirebirdDatabase) || (database instanceof
             MSSQLDatabase) || (database instanceof MySQLDatabase) || (database instanceof OracleDatabase) ||
             (database instanceof SQLiteDatabase) || (database instanceof SybaseASADatabase) || (database instanceof
-            SybaseDatabase);
+                SybaseDatabase) || (database instanceof
+                DMDatabase);
     }
 
     /**

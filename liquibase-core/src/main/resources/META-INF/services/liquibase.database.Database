@@ -14,6 +14,7 @@ liquibase.database.core.MariaDBDatabase
 liquibase.database.core.MockDatabase
 liquibase.database.core.MySQLDatabase
 liquibase.database.core.OracleDatabase
+liquibase.database.core.DMDatabase
 liquibase.database.core.PostgresDatabase
 liquibase.database.core.SQLiteDatabase
 liquibase.database.core.SybaseASADatabase
